@@ -1,0 +1,10 @@
+{
+  "registration_optin": {
+    "testName": "Registration Flow (Opt-In)",
+    "status": "passed",
+    "startTime": "2025-12-11T11:45:58.080Z",
+    "steps": [],
+    "screenshots": [],
+    "duration": 45353
+  }
+}

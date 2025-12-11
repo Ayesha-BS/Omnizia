@@ -1,0 +1,489 @@
+{
+  "config": {
+    "configFile": "C:\\Omnizia Automation\\recordati-automation\\playwright.config.cjs",
+    "rootDir": "C:/Omnizia Automation/recordati-automation/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-reports/html-report",
+          "open": "never"
+        }
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/test-results.json"
+        }
+      ],
+      [
+        "C:\\Omnizia Automation\\recordati-automation\\utils\\pdf-reporter.ts",
+        {}
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 30000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Omnizia Automation/recordati-automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Omnizia Automation/recordati-automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Omnizia Automation/recordati-automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Omnizia Automation/recordati-automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Omnizia Automation/recordati-automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Omnizia Automation/recordati-automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "registration\\registration-valid.spec.ts",
+      "file": "registration/registration-valid.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Registration flow (Positive Journey) @optout",
+          "ok": false,
+          "tags": [
+            "optout"
+          ],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 32239,
+                  "error": {
+                    "message": "Error: consent token/userId not captured from registration-confirm. token=undefined, userId=undefined\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"ok\"\u001b[39m\nReceived: \u001b[31mnull\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: consent token/userId not captured from registration-confirm. token=undefined, userId=undefined\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"ok\"\u001b[39m\nReceived: \u001b[31mnull\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at captureConsentAndOpenInNewTab (C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts:573:3)\n    at C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts:727:5",
+                    "location": {
+                      "file": "C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts",
+                      "column": 3,
+                      "line": 573
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 571 |\u001b[39m   console\u001b[33m.\u001b[39mlog(\u001b[32m'[consent] Waiting for token and userId to be captured...'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 572 |\u001b[39m   \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 573 |\u001b[39m   \u001b[36mawait\u001b[39m expect\n \u001b[90m     |\u001b[39m   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 574 |\u001b[39m     \u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m {\n \u001b[90m 575 |\u001b[39m       console\u001b[33m.\u001b[39mlog(\u001b[32m'[consent-poll] Current state - token:'\u001b[39m\u001b[33m,\u001b[39m token\u001b[33m,\u001b[39m \u001b[32m'userId:'\u001b[39m\u001b[33m,\u001b[39m userId)\u001b[33m;\u001b[39m\n \u001b[90m 576 |\u001b[39m       \u001b[36mreturn\u001b[39m (token \u001b[33m&&\u001b[39m userId \u001b[33m?\u001b[39m \u001b[32m'ok'\u001b[39m \u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts",
+                        "column": 3,
+                        "line": 573
+                      },
+                      "message": "Error: consent token/userId not captured from registration-confirm. token=undefined, userId=undefined\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"ok\"\u001b[39m\nReceived: \u001b[31mnull\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n\u001b[0m \u001b[90m 571 |\u001b[39m   console\u001b[33m.\u001b[39mlog(\u001b[32m'[consent] Waiting for token and userId to be captured...'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 572 |\u001b[39m   \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 573 |\u001b[39m   \u001b[36mawait\u001b[39m expect\n \u001b[90m     |\u001b[39m   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 574 |\u001b[39m     \u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m {\n \u001b[90m 575 |\u001b[39m       console\u001b[33m.\u001b[39mlog(\u001b[32m'[consent-poll] Current state - token:'\u001b[39m\u001b[33m,\u001b[39m token\u001b[33m,\u001b[39m \u001b[32m'userId:'\u001b[39m\u001b[33m,\u001b[39m userId)\u001b[33m;\u001b[39m\n \u001b[90m 576 |\u001b[39m       \u001b[36mreturn\u001b[39m (token \u001b[33m&&\u001b[39m userId \u001b[33m?\u001b[39m \u001b[32m'ok'\u001b[39m \u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at captureConsentAndOpenInNewTab (C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts:573:3)\u001b[22m\n\u001b[2m    at C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts:727:5\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "[test] Using UUID: DE444444, EMAIL: umme.ayesha+04@brainstation-23.com, BASE_URL: https://stage.recordati-plus.de/de_DE/account/signin\n"
+                    },
+                    {
+                      "text": "Navigating to BASE_URL: https://stage.recordati-plus.de/de_DE/account/signin\n"
+                    },
+                    {
+                      "text": "Filling SSO credentials\n"
+                    },
+                    {
+                      "text": "Clicking Sign In button\n"
+                    },
+                    {
+                      "text": "Current URL after sign-in: https://sso.omnizia.com/auth/realms/viquia/login-actions/authenticate?session_code=Gpwsd6-ulXTYtje0BTPgi-8H9FIVgWHzHUvXP-w_2cE&execution=9baa07ab-b0db-4259-bfd0-cc8699a74764&client_id=https%3A%2F%2Fviquia.cloudflareaccess.com%2Fcdn-cgi%2Faccess%2Fcallback&tab_id=IQEygAfjeUw\n"
+                    },
+                    {
+                      "text": "Navigating to registration page\n"
+                    },
+                    {
+                      "text": "[cookies] Waiting for cookie banner to appear...\n"
+                    },
+                    {
+                      "text": "[cookies] ✓ Cookie banner is visible\n"
+                    },
+                    {
+                      "text": "[cookies] ✓ Scrolled to button\n"
+                    },
+                    {
+                      "text": "[cookies] ✓ Clicked \"Alle akzeptieren\" button\n"
+                    },
+                    {
+                      "text": "[cookies] ✓ Cookies accepted successfully - banner dismissed\n"
+                    },
+                    {
+                      "text": "✓ LANR validation successful\n"
+                    },
+                    {
+                      "text": "[consent] Setting up route interception...\n"
+                    },
+                    {
+                      "text": "[consent] Clicking \"Ich stimme zu\" button...\n"
+                    },
+                    {
+                      "text": "[consent] Waiting for token and userId to be captured...\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: \u001b[90mundefined\u001b[39m userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: \u001b[90mundefined\u001b[39m userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: \u001b[90mundefined\u001b[39m userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent] Route intercepted: https://stage.recordati-plus.de/api/registration/registration-confirm\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: \u001b[90mundefined\u001b[39m userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent] Response status: \u001b[33m200\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent] Response headers: [\n  \u001b[32m'date'\u001b[39m,\n  \u001b[32m'content-type'\u001b[39m,\n  \u001b[32m'transfer-encoding'\u001b[39m,\n  \u001b[32m'connection'\u001b[39m,\n  \u001b[32m'report-to'\u001b[39m,\n  \u001b[32m'vary'\u001b[39m,\n  \u001b[32m'cf-cache-status'\u001b[39m,\n  \u001b[32m'nel'\u001b[39m,\n  \u001b[32m'etag'\u001b[39m,\n  \u001b[32m'content-encoding'\u001b[39m,\n  \u001b[32m'server'\u001b[39m,\n  \u001b[32m'cf-ray'\u001b[39m,\n  \u001b[32m'alt-svc'\u001b[39m\n]\n"
+                    },
+                    {
+                      "text": "[consent] date: Thu, 11 Dec 2025 11:45:41 GMT\n"
+                    },
+                    {
+                      "text": "[consent] content-type: application/json; charset=utf-8\n"
+                    },
+                    {
+                      "text": "[consent] transfer-encoding: chunked\n"
+                    },
+                    {
+                      "text": "[consent] connection: keep-alive\n"
+                    },
+                    {
+                      "text": "[consent] report-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=TqtJsKWOU9UY%2FcBt3Jo5WnYUh8HyVpzTw%2BxIZ6CMuODwTsOlkh7GvXZ2xviiIERgocGw%2F%2FG3ARfWkAAYsPf%2Ba3x%2Fb%2BU5oFg4oVWKZbfbRT977u2e4A%3D%3D\"}]}\n"
+                    },
+                    {
+                      "text": "[consent] vary: Accept-Encoding\n"
+                    },
+                    {
+                      "text": "[consent] cf-cache-status: DYNAMIC\n"
+                    },
+                    {
+                      "text": "[consent] nel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\n"
+                    },
+                    {
+                      "text": "[consent] etag: W/\"5pcah980zgkp\"\n"
+                    },
+                    {
+                      "text": "[consent] content-encoding: zstd\n"
+                    },
+                    {
+                      "text": "[consent] server: cloudflare\n"
+                    },
+                    {
+                      "text": "[consent] cf-ray: 9ac4bcb559385d31-CGP\n"
+                    },
+                    {
+                      "text": "[consent] alt-svc: h3=\":443\"; ma=86400\n"
+                    },
+                    {
+                      "text": "[consent] Response body length: \u001b[33m546\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent] Response body preview: (�/�\u0000X�\u0011\u0000���'���\u0003\bp1ȸ��@\u0011 ��B��rR\u0006��&W<= \fB\u0018c�16\u0001r\u0000p\u0000y\u0000��\u0011�\u0012�E<��\u0002\u0018��_f�_��8\u0003��n��b�~yQ�\u0007O=\u0005��/O\t*\n���.\u001e��<w�ǝ�\b!@g��FL�\u0005֚�ԃ�j��{s:w�h�=\u0013����`�A\u0019�\u0012#A\u0010�\u0017Y��w�)���vO\u0011yk��G��m\u001cr}�q��ԏ�n;�L���\u0007G\u0011#1\"\u0006���2\n"
+                    },
+                    {
+                      "text": "[consent] Content-Encoding: zstd\n"
+                    },
+                    {
+                      "text": "[consent] Attempting to decompress Zstandard response...\n"
+                    },
+                    {
+                      "text": "[consent] Got response buffer, length: \u001b[33m575\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent] Decoded buffer preview: (�/�\u0000X�\u0011\u0000���'���\u0003\bp1ȸ��@\u0011 ��B��rR\u0006��&W<= \fB\u0018c�16\u0001r\u0000p\u0000y\u0000��\u0011�\u0012�E<��\u0002\u0018��_f�_��8\u0003��n��b�~yQ�\u0007O=\u0005��/O\t*\n���.\u001e��<w�ǝ�\b!@g��FL�\u0005֚�ԃ�j��{s:w�h�=\u0013����`�A\u0019�\u0012#A\u0010�\u0017Y��w�)���vO\u0011yk��G��m\u001cr}�q��ԏ�n;�L���\u0007G\u0011#1\"\u0006���2\n"
+                    },
+                    {
+                      "text": "[consent] Failed to parse buffer as JSON: Unexpected token '(', \"(�/�\u0000X�\u0011\u0000�\"... is not valid JSON\n"
+                    },
+                    {
+                      "text": "[consent] Final token state: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent] Final userId state: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent] Token not found in response, checking cookies and localStorage...\n"
+                    },
+                    {
+                      "text": "[consent] Available cookies: [\n  \u001b[32m'AUTH_SESSION_ID'\u001b[39m,\n  \u001b[32m'AUTH_SESSION_ID_LEGACY'\u001b[39m,\n  \u001b[32m'KEYCLOAK_IDENTITY'\u001b[39m,\n  \u001b[32m'KEYCLOAK_IDENTITY_LEGACY'\u001b[39m,\n  \u001b[32m'KEYCLOAK_SESSION'\u001b[39m,\n  \u001b[32m'KEYCLOAK_SESSION_LEGACY'\u001b[39m,\n  \u001b[32m'CF_Authorization'\u001b[39m,\n  \u001b[32m'CF_Device'\u001b[39m,\n  \u001b[32m'_GRECAPTCHA'\u001b[39m,\n  \u001b[32m'CF_AppSession'\u001b[39m,\n  \u001b[32m'CF_Authorization'\u001b[39m,\n  \u001b[32m'CF_Authorization'\u001b[39m,\n  \u001b[32m'CF_Authorization'\u001b[39m,\n  \u001b[32m'CF_Authorization'\u001b[39m,\n  \u001b[32m'__Secure-next-auth.callback-url'\u001b[39m,\n  \u001b[32m'__Host-next-auth.csrf-token'\u001b[39m,\n  \u001b[32m'discovery_access_token'\u001b[39m,\n  \u001b[32m'discovery_refresh_token'\u001b[39m,\n  \u001b[32m'cookieyes-consent'\u001b[39m,\n  \u001b[32m'_ga_ZGYMJTJXM0'\u001b[39m,\n  \u001b[32m'_ga'\u001b[39m\n]\n"
+                    },
+                    {
+                      "text": "[consent] Found consent cookie: __Host-next-auth.csrf-token\n"
+                    },
+                    {
+                      "text": "[consent] localStorage keys: [ \u001b[32m'_grecaptcha'\u001b[39m ]\n"
+                    },
+                    {
+                      "text": "[consent] sessionStorage keys: []\n"
+                    },
+                    {
+                      "text": "[consent] Updated token state after alternative extraction: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772\n"
+                    },
+                    {
+                      "text": "[consent] Updated userId state after alternative extraction: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-listener] Response detected: https://stage.recordati-plus.de/api/registration/registration-confirm \u001b[33m200\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "[consent-poll] Current state - token: c43b59078ffa58d6285a709830cd12f964a5e30a05066a064567823f6f6af3e0%7Cd292705255e4dd6b5892e3a36597c1d1a8e812c6125c5b489310d3e96e085772 userId: \u001b[90mundefined\u001b[39m\n"
+                    },
+                    {
+                      "text": "Test report generated: C:\\Omnizia Automation\\recordati-automation\\test-results\\registration\\test-report.html\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-11T11:45:22.366Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Omnizia Automation\\recordati-automation\\test-results\\registration-registration--814f0-low-Positive-Journey-optout-firefox\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Omnizia Automation\\recordati-automation\\test-results\\registration-registration--814f0-low-Positive-Journey-optout-firefox\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts",
+                    "column": 3,
+                    "line": 573
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "495cbd6315e07b5466ed-76bb73fa7772e9b47a68",
+          "file": "registration/registration-valid.spec.ts",
+          "line": 620,
+          "column": 1
+        },
+        {
+          "title": "Registration flow (Positive Journey) @optin",
+          "ok": true,
+          "tags": [
+            "optin"
+          ],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 46202,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Current URL after sign-in: https://sso.omnizia.com/auth/realms/viquia/login-actions/authenticate?client_id=https%3A%2F%2Fviquia.cloudflareaccess.com%2Fcdn-cgi%2Faccess%2Fcallback&tab_id=6D6VWLAg53M\n"
+                    },
+                    {
+                      "text": "Navigating to registration page\n"
+                    },
+                    {
+                      "text": "[cookies] Waiting for cookie banner to appear...\n"
+                    },
+                    {
+                      "text": "[cookies] ✓ Cookie banner is visible\n"
+                    },
+                    {
+                      "text": "[cookies] ✓ Scrolled to button\n"
+                    },
+                    {
+                      "text": "[cookies] ✓ Clicked \"Alle akzeptieren\" button\n"
+                    },
+                    {
+                      "text": "[cookies] ✓ Cookies accepted successfully - banner dismissed\n"
+                    },
+                    {
+                      "text": "[test] Waiting for success banner to appear...\n"
+                    },
+                    {
+                      "text": "[test] ✓ Banner wait complete\n"
+                    },
+                    {
+                      "text": "[test] Waiting for password setup page...\n"
+                    },
+                    {
+                      "text": "[test] ✓ Navigated to password setup page\n"
+                    },
+                    {
+                      "text": "[test] Waiting for overview page...\n"
+                    },
+                    {
+                      "text": "[test] Current URL before navigation: https://stage.recordati-plus.de/de_DE/password-setup?uid=02cff385-806f-4c57-ae01-c6d9c941f819&pst=187c18c398780d51dd01528b198f16d520fdec7a0409d5518b144436fd0defd06058ee3e\n"
+                    },
+                    {
+                      "text": "[test] URL changed to: https://stage.recordati-plus.de/de_DE/overview-page\n"
+                    },
+                    {
+                      "text": "[test] Successfully navigated to overview page\n"
+                    },
+                    {
+                      "text": "[test] Verifying overview page UI...\n"
+                    },
+                    {
+                      "text": "[test] ✓ Overview page UI loaded successfully\n"
+                    },
+                    {
+                      "text": "Test report generated: C:\\Omnizia Automation\\recordati-automation\\test-results\\registration\\test-report.html\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-11T11:45:56.817Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "495cbd6315e07b5466ed-7a2b99beee71ec5d5fbd",
+          "file": "registration/registration-valid.spec.ts",
+          "line": 805,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-12-11T11:45:20.918Z",
+    "duration": 83175.473,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

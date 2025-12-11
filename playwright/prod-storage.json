@@ -1,0 +1,162 @@
+{
+  "cookies": [
+    {
+      "name": "_GRECAPTCHA",
+      "value": "09ABCLyOHPGZn6mlvnAfr4C6TiAMqjFxrhTJrmmk53VCzXjMQVU1LEEJVFOou3C0xGXBha2iLORDZxLp_HRNtQ2ts",
+      "domain": "www.google.com",
+      "path": "/recaptcha",
+      "expires": 1780665174.707637,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__Host-next-auth.csrf-token",
+      "value": "bc79764ca9f21ec65ee02ff2435db62d9bbd799568a599d6a6fbc6265dcf802c%7C9c9bc507db6e80e2f9974d3d3bb2cad0e3c03d19fcf440dd7752871e3ea6ff1d",
+      "domain": "recordati-plus.de",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__Secure-next-auth.callback-url",
+      "value": "https%3A%2F%2Frecordati-plus.de%2Fde_DE%2Faccount%2Fsignin",
+      "domain": "recordati-plus.de",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.462303379.1765113177",
+      "domain": ".recordati-plus.de",
+      "path": "/",
+      "expires": 1799928733.356439,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "cookieyes-consent",
+      "value": "consentid:N3N1N256eVl2NHJyaTc0OG1nMlZHYjN4aWFGNjVkSk0,consent:yes,action:yes,necessary:yes,functional:no,analytics:yes,performance:no,advertisement:no,other:no",
+      "domain": ".recordati-plus.de",
+      "path": "/",
+      "expires": 1796904732,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "_cfuvid",
+      "value": "RnaKa_IvXgEOuASLe_1JjmPNC15fAVKE08NJEO4bPhc-1765358913019-0.0.1.1-604800000",
+      "domain": ".vimeo.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "appGAenablecookie",
+      "value": "true",
+      "domain": "recordati-plus.de",
+      "path": "/",
+      "expires": 1796904733,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "vuid",
+      "value": "pl293507342.167742198",
+      "domain": ".vimeo.com",
+      "path": "/",
+      "expires": 1799928737.524434,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "discovery_access_token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg2Nzc5NmZlLTIzNDktNDM5ZS04Njg3LTY2ZTM5ZWYzOTM1NCIsInRlbmFudElEIjoiMGE1ZTE5MjktZDAxOS00ZmVlLWI0ZDUtZjNmN2ZhMGRiYjE4IiwiaWF0IjoxNzY1MzY3NTQ1LCJleHAiOjE3NjUzNzQ3NDUsImlzcyI6Ijg2Nzc5NmZlLTIzNDktNDM5ZS04Njg3LTY2ZTM5ZWYzOTM1NCJ9.UWjbsXFajE4v7Ck1GuSuovh19K5xNayp5PdjFAO5xYQ",
+      "domain": "recordati-plus.de",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "discovery_refresh_token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg2Nzc5NmZlLTIzNDktNDM5ZS04Njg3LTY2ZTM5ZWYzOTM1NCIsInRlbmFudElEIjoiMGE1ZTE5MjktZDAxOS00ZmVlLWI0ZDUtZjNmN2ZhMGRiYjE4IiwiaWF0IjoxNzY1MzY3NTQ1LCJleHAiOjE3NjU0NTM5NDUsImlzcyI6Ijg2Nzc5NmZlLTIzNDktNDM5ZS04Njg3LTY2ZTM5ZWYzOTM1NCJ9.9OZMy-ONC2kJjqLP84SPiBPTZ6J4e20Hl0FweGAK748",
+      "domain": "recordati-plus.de",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cf_bm",
+      "value": "yQakAiZC6Y.rJzm2tBpn.jXCPPpc60H7tEybiDXoeZ0-1765368522-1.0.1.1-6GYLDU0LjFzl.ttOr5s0FLR_biUunoXrMCY_OxO5.7p0hy5CV9Hw7lvb4pwf1_HW",
+      "domain": ".vimeo.com",
+      "path": "/",
+      "expires": 1765370322.707168,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ga_ZGYMJTJXM0",
+      "value": "GS2.1.s1765358912$o2$g1$t1765368734$j59$l0$h0",
+      "domain": ".recordati-plus.de",
+      "path": "/",
+      "expires": 1799928734.737964,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__Secure-next-auth.session-token",
+      "value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..eVf3Q_Yhr_JBsViP.C7ZOK5Iq9WW5D1rNF6vIncA71KZMijQ7e1rr2gKcOW0c19bFzZC1gUC_MWIKGZqX1mMgw7tWkdHyBzUdIIwd3K-mm2QBqQgujZobmPX4BjWgNZ9o5L1OGKmKoYZFHB2YtNfDnF4qc5S_fKH9upNEcIXmvAYlT6nRV5PSDxGp4MAL95VHjVFhems9IMZ6Xi7GIjSVdJNOoHES_TqXGgtegldxnV3ygCUbqn9z58r2PzGuop1djqgNUCDoq50Ip1UPGs1wDcgXxEJVQf_NuXql7ijT2FySgQPsPOTtakfveuhkGbcgJ-5mNXiWal3e3PJDslZD72McTpMf3y6WNA2lqy6B36xIOyH3643-KeZsI3_4BKo1LnaujRdMlvWKv7E_fX8V5Im6yNDau7y5aPMT3SEvBl-r6UYC2j37iZCNRsQVqlPqiaH2ZFpXO9e17KbJsblSIoQ6aYtdNas0A3AeIg8_7aETUExE0_xnH-p_GtYu44VH2_wagilGEVG8D2bNBiDJFNjeUn2R9SLwSCMYnjaeGQ6VM22HaW5pd8wAmHhaw6abqZb_cyBmSbHGL9yacYs6VSjs0QjvSyd8f39D3sPg-pBl3DsQ7yDKvH1u1D071-lcCyfTuRBaJXNGFidpVuyXIJRALyJWXKkjT6vd8RwHQcLER3P-PgvSx1WDRwz3Uy9Kc7zAlDu62SX2Zkh69aoIgeOVDcUemUyuR4R4TK6H8vm3btqINHtZelOClmjwWjV14RAzuExo_g_abc1KzhRFSgsDndX_d5UJN8GNeYQhhQP6nj6HX7yT20O0xus-C_pZZQQ24AQ_rhsj4aPYwjW_UUX9AY6y92rwFP0eIxHRWAq_TuGAWLdXrQ1rqgWICj55jg.Ka9fv6AMdc-jBqSNUzItxw",
+      "domain": "recordati-plus.de",
+      "path": "/",
+      "expires": 1767960737.488581,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://recordati-plus.de",
+      "localStorage": [
+        {
+          "name": "_grecaptcha",
+          "value": "09ABCLyOFVsW1o_9iroL72BLDc4QR0jfZ0RnwB7fJUK9Hd2TZiY_8NPCRVaNTj6b1lPr5t5hbXCwaTLS36w1u8JLHvgHQnfwlrSVUa1deqzns_C5S3PJzDs97Hb4iUqUQy"
+        },
+        {
+          "name": "i18nextLng",
+          "value": "en-US"
+        }
+      ]
+    },
+    {
+      "origin": "https://www.google.com",
+      "localStorage": [
+        {
+          "name": "rc::a",
+          "value": "MTlmc2kzOXV1NWN2Zg=="
+        },
+        {
+          "name": "rc::f",
+          "value": "0aAAUHAek2JbnuS7vYPA2RWLxXVjYTakMDSAzhOydgfYegvo7dRbKpmP7A5iuYmr_ZUVVMvx8"
+        }
+      ]
+    }
+  ]
+}
