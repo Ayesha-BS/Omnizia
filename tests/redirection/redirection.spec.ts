@@ -15,8 +15,8 @@ dotenv.config();
 
 test.setTimeout(300000); // 5 minutes timeout for all redirects
 
-const EMAIL: string = process.env.MY_USERNAME ?? '';
-const PASSWORD: string = process.env.MY_PASSWORD ?? '';
+const EMAIL: string = process.env.LOGIN_EMAIL ?? '';
+const PASSWORD: string = process.env.LOGIN_PASSWORD ?? '';
 const BASE_URL: string = 'https://recordati-plus.de/de_DE/account/signin';
 const CSV_PATH: string = path.join(__dirname, '../../Data/redirects.csv');
 
@@ -63,10 +63,12 @@ async function login(page: Page) {
   
   await emailInput.waitFor({ state: 'visible', timeout: 5000 });
   await emailInput.fill(EMAIL);
+  await emailInput.press('Tab'); // Trigger validation
   console.log('[login] ✓ Filled email:', EMAIL);
   
   await passwordInput.waitFor({ state: 'visible', timeout: 5000 });
   await passwordInput.fill(PASSWORD);
+  await passwordInput.press('Tab'); // Trigger validation
   console.log('[login] ✓ Filled password');
   
   // Wait for Weiter button to be enabled

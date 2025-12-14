@@ -1,10 +1,18 @@
 {
-  "registration_optin": {
-    "testName": "Registration Flow (Opt-In)",
+  "registration_valid_double_optin": {
+    "testName": "Registration Flow (Valid Double Opt-in)",
     "status": "passed",
-    "startTime": "2025-12-11T11:45:58.080Z",
+    "startTime": "2025-12-14T11:01:12.155Z",
     "steps": [],
     "screenshots": [],
-    "duration": 45353
+    "duration": 27937
+  },
+  "registration_valid_single_optin": {
+    "testName": "Registration Flow (Valid Single Opt-in)",
+    "status": "passed",
+    "startTime": "2025-12-14T11:01:40.238Z",
+    "steps": [],
+    "screenshots": [],
+    "duration": 25449
   }
 }
