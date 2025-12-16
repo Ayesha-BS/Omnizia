@@ -92,7 +92,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8046,
+                  "duration": 11648,
                   "errors": [],
                   "stdout": [
                     {
@@ -101,7 +101,7 @@
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-12-14T11:00:52.310Z",
+                  "startTime": "2025-12-16T07:12:44.010Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -138,7 +138,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 10423,
+                  "duration": 11338,
                   "error": {
                     "message": "Error: 2 redirect(s) failed:\n  ✗ FAIL: https://recordati-plus.de/de_DE/recordati-article/urologie-fortbildungen-direct-zu-event-page -> https://recordati-plus.de/de_DE/recordati-article/urologie-fortbildungen-direct-zu-event-page (Expected: https://recordati-plus.de/de_DE/events/69902154579)\n  ✗ FAIL: https://recordati-plus.de/de_DE/recordati-article/dgu-kongress-2025-club-eilgard -> https://recordati-plus.de/de_DE/recordati-article/dgu-kongress-2025-club-eilgard (Expected: https://recordati-plus.de/de_DE/recordati-article/dgu-kongress-2025)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m",
                     "stack": "Error: 2 redirect(s) failed:\n  ✗ FAIL: https://recordati-plus.de/de_DE/recordati-article/urologie-fortbildungen-direct-zu-event-page -> https://recordati-plus.de/de_DE/recordati-article/urologie-fortbildungen-direct-zu-event-page (Expected: https://recordati-plus.de/de_DE/events/69902154579)\n  ✗ FAIL: https://recordati-plus.de/de_DE/recordati-article/dgu-kongress-2025-club-eilgard -> https://recordati-plus.de/de_DE/recordati-article/dgu-kongress-2025-club-eilgard (Expected: https://recordati-plus.de/de_DE/recordati-article/dgu-kongress-2025)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m\n    at C:\\Omnizia Automation\\recordati-automation\\tests\\redirection\\redirection.spec.ts:193:93",
@@ -221,12 +221,12 @@
                       "text": "  ✓ PASS: Redirected correctly to https://recordati-plus.de/de_DE/recordati-article/dgu-kongress-2025\n"
                     },
                     {
-                      "text": "\n[summary] 2 redirects failed. See C:\\Omnizia Automation\\recordati-automation\\TestResult\\Redirection\\redirect_results_2025-12-14T11-01-10.log\n"
+                      "text": "\n[summary] 2 redirects failed. See C:\\Omnizia Automation\\recordati-automation\\TestResult\\Redirection\\redirect_results_2025-12-16T07-13-07.log\n"
                     }
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-12-14T11:01:00.516Z",
+                  "startTime": "2025-12-16T07:12:55.863Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -265,7 +265,7 @@
       "specs": [
         {
           "title": "Registration flow (Positive Journey) @valid-double-optin",
-          "ok": true,
+          "ok": false,
           "tags": [
             "valid-double-optin"
           ],
@@ -280,9 +280,28 @@
                 {
                   "workerIndex": 1,
                   "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 28080,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 18358,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Gültige LANR')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Gültige LANR')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Gültige LANR')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Gültige LANR')\u001b[22m\n\n    at C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts:345:50",
+                    "location": {
+                      "file": "C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts",
+                      "column": 50,
+                      "line": 345
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 343 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'#registerCheckbox'\u001b[39m)\u001b[33m.\u001b[39mcheck()\u001b[33m;\u001b[39m\n \u001b[90m 344 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'input[name=\"uuid\"]'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[33mTEST_UUID1\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 345 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Gültige LANR'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 346 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'input[name=\"email\"]'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[33mTEST_EMAIL1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 347 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'input[name=\"email\"]'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 348 |\u001b[39m     \u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts",
+                        "column": 50,
+                        "line": 345
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Gültige LANR')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Gültige LANR')\u001b[22m\n\n\n\u001b[0m \u001b[90m 343 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'#registerCheckbox'\u001b[39m)\u001b[33m.\u001b[39mcheck()\u001b[33m;\u001b[39m\n \u001b[90m 344 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'input[name=\"uuid\"]'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[33mTEST_UUID1\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 345 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Gültige LANR'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 346 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'input[name=\"email\"]'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[33mTEST_EMAIL1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 347 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'input[name=\"email\"]'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 348 |\u001b[39m     \u001b[0m\n\u001b[2m    at C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts:345:50\u001b[22m"
+                    }
+                  ],
                   "stdout": [
                     {
                       "text": "[test] Using UUID: DE444444, EMAIL: umme.ayesha+04@brainstation-23.com, BASE_URL: https://stage.recordati-plus.de/de_DE/account/signin\n"
@@ -291,7 +310,7 @@
                       "text": "[test] Navigating to registration page...\n"
                     },
                     {
-                      "text": "[test] Checking current URL: https://sso.omnizia.com/auth/realms/viquia/protocol/saml?SAMLRequest=pZLRT8IwEMb%2FlaXvW%2BnQmDSMBEERA0JgGvWtdEWrXTt6LSp%2Fvd1AJTHy4uvdfff7vst1gJWqoj3vnvVcrL0AF72XSgOtGxnyVlPDQALVrBRAHaeL3mRM06RFGYCwThqNDiTVcU1ljTPcKBT1vtR9o8GXwi6E3UgubufjDD07VwHFeCPXXrKEK%2BOLlWJWMM4FQMJNiXmhY%2F4k8a6EOVNqyfgrikaDDOn2Yjq8v5gYyNvD8%2BuVvXjYXr301%2BJ9qE%2FPSMugaBCySs1qCz9AAJOYUsttTQ0QFg6DA1aVsDeDvyLgOm6gAXgx0uCYdhlKW%2BlpTNKYnOSE0Bah5CRJSfsRRbO97FzqQuqn42da7oaAXuX5LJ5NFzmK7oSFxmsYQN1OTacN3Hb%2Fca4OPlzU2b3DTTA0GsyMkvwj6ill3vphlxMZctYLFF0aWzL3dwSSkKYii3jVjFKvoRJcrqQognf8G%2FNdPHzF7ic%3D&RelayState=5bb2ba3d92b279802561f23c2305e653d6d5fcbc7ff593024b1964ba5b59acca.JTdCJTIyaWF0JTIyJTNBMTc2NTcxMDA3NCUyQyUyMmF1dGhEb21haW4lMjIlM0ElMjJ2aXF1aWEuY2xvdWRmbGFyZWFjY2Vzcy5jb20lMjIlMkMlMjJob3N0bmFtZSUyMiUzQSUyMnN0YWdlLnJlY29yZGF0aS1wbHVzLmRlJTIyJTJDJTIycmVkaXJlY3RVUkwlMjIlM0ElMjIlMkZkZV9ERSUyRmFjY291bnQlMkZzaWduaW4lMjIlMkMlMjJhdWQlMjIlM0ElMjJhNzI5OTQ5NTcyZjJjOTI4ZmMzOTNkNGIxNjRhM2JiODI4YTRiZWM0NWRmNDcxNDI0ZTg5YzgyMjgzN2Y1NDg1JTIyJTJDJTIyaXNTYW1lU2l0ZU5vbmVDb21wYXRpYmxlJTIyJTNBdHJ1ZSUyQyUyMmlzSURQVGVzdCUyMiUzQWZhbHNlJTJDJTIyaXNSZWZyZXNoJTIyJTNBZmFsc2UlMkMlMjJub25jZSUyMiUzQSUyMm5SVGFIMFVaQ2IzY0ZkWGpkJTIyJTJDJTIyaWRwSWQlMjIlM0ElMjJlZjNiM2VjMi01Mzg0LTQwNWMtODlmNy0yMDY4ODUzMzk3NmIlMjIlMkMlMjJzZXJ2aWNlX3Rva2VuX3N0YXR1cyUyMiUzQWZhbHNlJTJDJTIyYXV0aF9zdGF0dXMlMjIlM0ElMjJOT05FJTIyJTJDJTIyaXNfd2FycCUyMiUzQWZhbHNlJTJDJTIyaXNfZ2F0ZXdheSUyMiUzQWZhbHNlJTJDJTIybXRsc19hdXRoJTIyJTNBJTdCJTIyY2VydF9pc3N1ZXJfZG4lMjIlM0ElMjIlMjIlMkMlMjJjZXJ0X3NlcmlhbCUyMiUzQSUyMiUyMiUyQyUyMmNlcnRfaXNzdWVyX3NraSUyMiUzQSUyMiUyMiUyQyUyMmNlcnRfcHJlc2VudGVkJTIyJTNBZmFsc2UlMkMlMjJjb21tb25fbmFtZSUyMiUzQSUyMiUyMiUyQyUyMmF1dGhfc3RhdHVzJTIyJTNBJTIyTk9ORSUyMiU3RCUyQyUyMmFwcFNlc3Npb25IYXNoJTIyJTNBJTIyYjI0MWVlMGFmYjE5OTA2NTJmYmE5NDJkZTJjMGIzN2FlZmMxM2Y5ZTQyZWI0MTM2OWYyNDQ2ZmU2Y2Y3NzVkZCUyMiUyQyUyMnNhbWxJZCUyMiUzQSUyMm4zU09HWEVNb3NUM0dCSmZyRVl6SGpDcWV4R241NzEwbyUyMiUyQyUyMnJlcGxheUlkJTIyJTNBJTIyMzE4YjRmZjE4NTQ5NWEyZjE5ZDRjNWQ4Yzg0YmY4NDNkOTU4YTEyNjdlYzE1ZGY2ZTllMjgwNDFjZWExNWZjYSUyMiU3RA%3D%3D\n"
+                      "text": "[test] Checking current URL: https://sso.omnizia.com/auth/realms/viquia/protocol/saml?SAMLRequest=pZJJb8IwEIX%2FSuR7YkJbUC2CREFV6QIR26E345hg1UvqsaHl19cJXZCqcul1Zt58742mB1TJigy82%2BoZf%2FUcXPSmpAZSNzLkrSaGggCiqeJAHCPzwdMjaSctQgG4dcJodCKpzmsqa5xhRqJo8KUeGg1ecTvndicYX84eM7R1rgKC8U68ekETJo0vNpJaThnjAAkzCrNCx6wU%2BFjCjEq5puwFReNRhrS9nk73MNxPOuNuebP0D%2FdLur0EXh7u8ge7UigahaxC09rCDxDAJEZpcaipAULDYXDASgWfZvBXBFzHDTQAz8caHNUuQ%2B1W%2BypO23HaWbS6JL0gaSvpdK%2BeUZR%2Fym6ELoQuz59pfRwCcrdY5HE%2BnS9QtOIWGq9hAPV7NZ00cNv%2Fx7l6%2BHRR7%2FgOk2BoPMqNFOw9Gkhp9sOwy%2FEMOes5im6NVdT9HSFN0qYiinjTjBKvoeJMbAQvgnf8G%2FNdPH3F%2Fgc%3D&RelayState=cefe97bf74701d88bc5cb79038bb54b54019aecb9f527ad4cee5223895b626c3.JTdCJTIyaWF0JTIyJTNBMTc2NTg2OTE5MSUyQyUyMmF1dGhEb21haW4lMjIlM0ElMjJ2aXF1aWEuY2xvdWRmbGFyZWFjY2Vzcy5jb20lMjIlMkMlMjJob3N0bmFtZSUyMiUzQSUyMnN0YWdlLnJlY29yZGF0aS1wbHVzLmRlJTIyJTJDJTIycmVkaXJlY3RVUkwlMjIlM0ElMjIlMkZkZV9ERSUyRmFjY291bnQlMkZzaWduaW4lMjIlMkMlMjJhdWQlMjIlM0ElMjJhNzI5OTQ5NTcyZjJjOTI4ZmMzOTNkNGIxNjRhM2JiODI4YTRiZWM0NWRmNDcxNDI0ZTg5YzgyMjgzN2Y1NDg1JTIyJTJDJTIyaXNTYW1lU2l0ZU5vbmVDb21wYXRpYmxlJTIyJTNBdHJ1ZSUyQyUyMmlzSURQVGVzdCUyMiUzQWZhbHNlJTJDJTIyaXNSZWZyZXNoJTIyJTNBZmFsc2UlMkMlMjJub25jZSUyMiUzQSUyMm56NjBZakpVb2EwS1N5Q2lFJTIyJTJDJTIyaWRwSWQlMjIlM0ElMjJlZjNiM2VjMi01Mzg0LTQwNWMtODlmNy0yMDY4ODUzMzk3NmIlMjIlMkMlMjJzZXJ2aWNlX3Rva2VuX3N0YXR1cyUyMiUzQWZhbHNlJTJDJTIyYXV0aF9zdGF0dXMlMjIlM0ElMjJOT05FJTIyJTJDJTIyaXNfd2FycCUyMiUzQWZhbHNlJTJDJTIyaXNfZ2F0ZXdheSUyMiUzQWZhbHNlJTJDJTIybXRsc19hdXRoJTIyJTNBJTdCJTIyY2VydF9pc3N1ZXJfZG4lMjIlM0ElMjIlMjIlMkMlMjJjZXJ0X3NlcmlhbCUyMiUzQSUyMiUyMiUyQyUyMmNlcnRfaXNzdWVyX3NraSUyMiUzQSUyMiUyMiUyQyUyMmNlcnRfcHJlc2VudGVkJTIyJTNBZmFsc2UlMkMlMjJjb21tb25fbmFtZSUyMiUzQSUyMiUyMiUyQyUyMmF1dGhfc3RhdHVzJTIyJTNBJTIyTk9ORSUyMiU3RCUyQyUyMmFwcFNlc3Npb25IYXNoJTIyJTNBJTIyMjMzNDVlN2Q3MmU3ZDRiYmVmNmRkYmRmY2Q2MWVjMWVmMjcyMTE5ZWYwZDg0MmM5YTAzNDJiMWQ5YWFlNGY1ZSUyMiUyQyUyMnNhbWxJZCUyMiUzQSUyMm5yOU9Pd3NDd042STdnQlV1S0pVYWg0c2VnekhQS3JWbSUyMiUyQyUyMnJlcGxheUlkJTIyJTNBJTIyM2ZlNzk5YWYzYzQ3MTVkYjRmNzE2N2FmNGExOTE5NWZlZTlhZDY4MTYxMWMxM2YxYzU4MmYyYjM0ZTkwYzk5YSUyMiU3RA%3D%3D\n"
                     },
                     {
                       "text": "[test] Detected SSO login page, filling credentials...\n"
@@ -303,53 +322,33 @@
                       "text": "[cookies] ✓ Cookies accepted\n"
                     },
                     {
-                      "text": "[consent] Setting up GET request listener...\n"
-                    },
-                    {
-                      "text": "[consent] Clicking \"Ich stimme zu\" button...\n"
-                    },
-                    {
-                      "text": "[consent] Waiting for consent parameters to be captured...\n"
-                    },
-                    {
-                      "text": "[consent] GET response intercepted: https://stage.recordati-plus.de/api/registration/registration-confirm\n"
-                    },
-                    {
-                      "text": "[consent] Response body: {\n  data: {\n    id: \u001b[32m'a6887da4-0182-4174-bcaf-6983e913c69f'\u001b[39m,\n    email: \u001b[32m'umme.ayesha+04@brainstation-23.com'\u001b[39m,\n    uuid: \u001b[32m'DE444444'\u001b[39m,\n    salutation: \u001b[32m'Herr'\u001b[39m,\n    first_name: \u001b[32m'DE Test'\u001b[39m,\n    last_name: \u001b[32m'Thomas Decker'\u001b[39m,\n    language_code: \u001b[32m'de'\u001b[39m,\n    country_iso2: \u001b[32m'de'\u001b[39m,\n    locale: \u001b[32m'de_DE'\u001b[39m,\n    specialty_onekey: \u001b[32m'VIQSP025'\u001b[39m,\n    telephone: \u001b[32m'+49458698890'\u001b[39m,\n    application_id: \u001b[32m'867796fe-2349-439e-8687-66e39ef39354'\u001b[39m,\n    status: \u001b[32m'consent_pending'\u001b[39m,\n    omnizia_id: \u001b[32m'VQPDE00444444'\u001b[39m,\n    created_at: \u001b[32m'2025-12-14T11:01:29.114Z'\u001b[39m,\n    consent_confirmation_token: \u001b[32m'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE2ODg3ZGE0LTAxODItNDE3NC1iY2FmLTY5ODNlOTEzYzY5ZiIsImlhdCI6MTc2NTcxMDA4OSwiZXhwIjoxNzY4MzAyMDg5LCJpc3MiOiJhNjg4N2RhNC0wMTgyLTQxNzQtYmNhZi02OTgzZTkxM2M2OWYifQ.PtF7abtFZVJPbKwhHaTFaR7CIG7pUrrCKd2XSx9vwNQ'\u001b[39m\n  },\n  errors: []\n}\n"
-                    },
-                    {
-                      "text": "[consent] Extracted parameters: {\n  token: \u001b[32m'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE2ODg3ZGE0LTAxODItNDE3NC1iY2FmLTY5ODNlOTEzYzY5ZiIsImlhdCI6MTc2NTcxMDA4OSwiZXhwIjoxNzY4MzAyMDg5LCJpc3MiOiJhNjg4N2RhNC0wMTgyLTQxNzQtYmNhZi02OTgzZTkxM2M2OWYifQ.PtF7abtFZVJPbKwhHaTFaR7CIG7pUrrCKd2XSx9vwNQ'\u001b[39m,\n  userId: \u001b[32m'a6887da4-0182-4174-bcaf-6983e913c69f'\u001b[39m,\n  domain: \u001b[90mundefined\u001b[39m,\n  local: \u001b[90mundefined\u001b[39m\n}\n"
-                    },
-                    {
-                      "text": "[consent] ✓ Successfully captured parameters: {\n  token: \u001b[32m'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE2ODg3ZGE0LTAxODItNDE3NC1iY2FmLTY5ODNlOTEzYzY5ZiIsImlhdCI6MTc2NTcxMDA4OSwiZXhwIjoxNzY4MzAyMDg5LCJpc3MiOiJhNjg4N2RhNC0wMTgyLTQxNzQtYmNhZi02OTgzZTkxM2M2OWYifQ.PtF7abtFZVJPbKwhHaTFaR7CIG7pUrrCKd2XSx9vwNQ'\u001b[39m,\n  userId: \u001b[32m'a6887da4-0182-4174-bcaf-6983e913c69f'\u001b[39m,\n  domain: \u001b[90mundefined\u001b[39m,\n  local: \u001b[90mundefined\u001b[39m\n}\n"
-                    },
-                    {
-                      "text": "[consent] Opening the confirmation URL in a new page: https://stage.recordati-plus.de/api/registration/consent-confirm?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE2ODg3ZGE0LTAxODItNDE3NC1iY2FmLTY5ODNlOTEzYzY5ZiIsImlhdCI6MTc2NTcxMDA4OSwiZXhwIjoxNzY4MzAyMDg5LCJpc3MiOiJhNjg4N2RhNC0wMTgyLTQxNzQtYmNhZi02OTgzZTkxM2M2OWYifQ.PtF7abtFZVJPbKwhHaTFaR7CIG7pUrrCKd2XSx9vwNQ&country_lang=de_DE&user_id=a6887da4-0182-4174-bcaf-6983e913c69f\n"
-                    },
-                    {
-                      "text": "[consent] Confirmation page loaded in new browser tab\n"
-                    },
-                    {
-                      "text": "[consent] Verifying confirmation success...\n"
-                    },
-                    {
-                      "text": "[consent] Current URL after confirmation: https://stage.recordati-plus.de/de_DE/password-setup?pst=4073ba6cbfaf2a9248eac0a6bb5e9c316287adb7f4a04f9f84fbcf28cf07b9ada7d5512a&uid=a6887da4-0182-4174-bcaf-6983e913c69f\n"
-                    },
-                    {
-                      "text": "[consent] ✓ Confirmation successful - redirected to: https://stage.recordati-plus.de/de_DE/password-setup?pst=4073ba6cbfaf2a9248eac0a6bb5e9c316287adb7f4a04f9f84fbcf28cf07b9ada7d5512a&uid=a6887da4-0182-4174-bcaf-6983e913c69f\n"
-                    },
-                    {
                       "text": "Test report generated: C:\\Omnizia Automation\\recordati-automation\\test-results\\registration\\test-report.html\n"
                     }
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-12-14T11:01:11.964Z",
+                  "startTime": "2025-12-16T07:13:08.997Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Omnizia Automation\\recordati-automation\\test-results\\registration-registration--b5a0e--Journey-valid-double-optin-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Omnizia Automation\\recordati-automation\\test-results\\registration-registration--b5a0e--Journey-valid-double-optin-chromium\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts",
+                    "column": 50,
+                    "line": 345
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "495cbd6315e07b5466ed-493a8873b151a3cf3361",
@@ -359,7 +358,7 @@
         },
         {
           "title": "Registration flow (Positive Journey) @valid-single-optin",
-          "ok": true,
+          "ok": false,
           "tags": [
             "valid-single-optin"
           ],
@@ -372,11 +371,30 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 2,
                   "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 25562,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 18456,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Gültige LANR')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Gültige LANR')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Gültige LANR')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Gültige LANR')\u001b[22m\n\n    at C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts:453:50",
+                    "location": {
+                      "file": "C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts",
+                      "column": 50,
+                      "line": 453
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 451 |\u001b[39m     \n \u001b[90m 452 |\u001b[39m     \u001b[90m// Wait for \"Gültige LANR\" text to appear (indicates validation passed)\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 453 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Gültige LANR'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 454 |\u001b[39m     \n \u001b[90m 455 |\u001b[39m     \u001b[90m// Fill email field with validation trigger\u001b[39m\n \u001b[90m 456 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'input[name=\"email\"]'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[33mTEST_EMAIL2\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts",
+                        "column": 50,
+                        "line": 453
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Gültige LANR')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Gültige LANR')\u001b[22m\n\n\n\u001b[0m \u001b[90m 451 |\u001b[39m     \n \u001b[90m 452 |\u001b[39m     \u001b[90m// Wait for \"Gültige LANR\" text to appear (indicates validation passed)\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 453 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Gültige LANR'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 454 |\u001b[39m     \n \u001b[90m 455 |\u001b[39m     \u001b[90m// Fill email field with validation trigger\u001b[39m\n \u001b[90m 456 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'input[name=\"email\"]'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[33mTEST_EMAIL2\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts:453:50\u001b[22m"
+                    }
+                  ],
                   "stdout": [
                     {
                       "text": "[test] Starting single opt-in test\n"
@@ -385,7 +403,7 @@
                       "text": "[test] TEST_UUID2 value: \"DE333333\"\n"
                     },
                     {
-                      "text": "[test] TEST_EMAIL2 value: \"umme.ayesha+0333@brainstation-23.com\"\n"
+                      "text": "[test] TEST_EMAIL2 value: \"madonna.ciccone@omnizia.com\"\n"
                     },
                     {
                       "text": "Test report generated: C:\\Omnizia Automation\\recordati-automation\\test-results\\registration\\test-report.html\n"
@@ -393,12 +411,28 @@
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-12-14T11:01:40.176Z",
+                  "startTime": "2025-12-16T07:13:29.258Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Omnizia Automation\\recordati-automation\\test-results\\registration-registration--36331--Journey-valid-single-optin-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Omnizia Automation\\recordati-automation\\test-results\\registration-registration--36331--Journey-valid-single-optin-chromium\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Omnizia Automation\\recordati-automation\\tests\\registration\\registration-valid.spec.ts",
+                    "column": 50,
+                    "line": 453
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "495cbd6315e07b5466ed-ebac48c5dfa41820bb70",
@@ -411,11 +445,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-12-14T11:00:51.245Z",
-    "duration": 74568.39,
-    "expected": 3,
+    "startTime": "2025-12-16T07:12:42.629Z",
+    "duration": 65432.598000000005,
+    "expected": 1,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 3,
     "flaky": 0
   }
 }

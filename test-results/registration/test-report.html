@@ -21,38 +21,36 @@
     
     <div class="summary">
       <h2>Summary</h2>
-      <p>Total Tests: 2</p>
-      <p class="passed">Passed: 2</p>
-      <p class="failed">Failed: 0</p>
+      <p>Total Tests: 1</p>
+      <p class="passed">Passed: 0</p>
+      <p class="failed">Failed: 1</p>
       <p class="skipped">Skipped: 0</p>
-      <p>Success Rate: 100.00%</p>
+      <p>Success Rate: 0.00%</p>
     </div>
     
     
       <div class="test">
         <div class="test-header">
-          Registration Flow (Valid Double Opt-in) - 
-          <span class="passed">PASSED</span>
-          <small>(27937ms)</small>
-        </div>
-        
-        
-        
-        <div class="steps">
-          <h3>Steps:</h3>
-          
-        </div>
-        
-        
-      </div>
-    
-      <div class="test">
-        <div class="test-header">
           Registration Flow (Valid Single Opt-in) - 
-          <span class="passed">PASSED</span>
-          <small>(25449ms)</small>
+          <span class="failed">FAILED</span>
+          <small>(18142ms)</small>
         </div>
         
+        
+          <div class="error">
+            <strong>Error:</strong><br>
+            [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+Locator: getByText('Gültige LANR')
+Expected: visible
+Timeout: 10000ms
+Error: element(s) not found
+
+Call log:
+[2m  - Expect "toBeVisible" with timeout 10000ms[22m
+[2m  - waiting for getByText('Gültige LANR')[22m
+
+          </div>
         
         
         <div class="steps">

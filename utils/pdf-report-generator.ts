@@ -34,7 +34,7 @@ interface TestReport {
 }
 
 export class PDFReportGenerator {
-  private doc: PDFDocument;
+  private doc: any;
   private outputPath: string;
 
   constructor(outputPath: string) {
@@ -123,7 +123,7 @@ export class PDFReportGenerator {
       // Test name and status only
       const testName = test.suiteName || `Test ${index + 1}`;
       this.doc.fontSize(12).font('Helvetica-Bold').text(`${index + 1}. ${testName}`);
-      
+
       // Status with color
       const statusColor = test.status === 'passed' ? '#4CAF50' : test.status === 'failed' ? '#F44336' : '#FF9800';
       this.doc.fillColor(statusColor).font('Helvetica').text(`Status: ${test.status ? test.status.toUpperCase() : 'UNKNOWN'}`);
@@ -188,7 +188,7 @@ export async function generatePDFReport(jsonResultsPath: string, outputPath: str
     // Process each test from the JSON structure
     console.log('JSON data keys:', Object.keys(testData));
     console.log('Suites array length:', testData.suites?.length || 0);
-    
+
     if (testData.suites) {
       testData.suites.forEach((suite: any, suiteIndex: number) => {
         console.log(`Processing suite ${suiteIndex + 1}: ${suite.title}`);
@@ -199,71 +199,71 @@ export async function generatePDFReport(jsonResultsPath: string, outputPath: str
               spec.tests.forEach((test: any, testIndex: number) => {
                 console.log(`Processing test ${testIndex + 1}: ${test.title || 'Unknown Test'}`);
                 testReport.totalTests++;
-        
-        const result = test.results?.[0];
-        if (result) {
-          testReport.totalDuration += result.duration || 0;
-        }
 
-        // Extract URL redirection details from test output
-        let urlDetails = undefined;
-        if (spec.title && spec.title.includes('Redirect validation')) {
-          const output = result?.stdout || [];
-          // Only get PASS and FAIL lines, not Testing: lines to avoid duplicates
-          const urlLines = output.filter((line: any) => 
-            line.text.includes('PASS:') || 
-            line.text.includes('FAIL:')
-          );
-          
-          if (urlLines.length > 0) {
-            const passedUrls = urlLines.filter((line: any) => line.text.includes('PASS:'));
-            const failedUrls = urlLines.filter((line: any) => line.text.includes('FAIL:'));
-            
-            // Create simple URL format: "passed: from URL to to URL"
-            const urlDetailsList = urlLines.map((line: any) => {
-              const text = line.text.trim();
-              if (text.includes('PASS:')) {
-                // Handle both formats: "PASS: Redirected correctly to URL" and "PASS: from -> to"
-                const redirectedMatch = text.match(/PASS:\s*Redirected correctly to\s*(.+)/);
-                const arrowMatch = text.match(/PASS:\s*(.+?)\s*->\s*(.+)/);
-                if (redirectedMatch) {
-                  return `passed: redirected correctly to ${redirectedMatch[1].trim()}`;
-                } else if (arrowMatch) {
-                  return `passed: ${arrowMatch[1].trim()} to ${arrowMatch[2].trim()}`;
+                const result = test.results?.[0];
+                if (result) {
+                  testReport.totalDuration += result.duration || 0;
                 }
-              } else if (text.includes('FAIL:')) {
-                const match = text.match(/FAIL:\s*(.+?)\s*->\s*(.+?)\s*\(Expected:\s*(.+)/);
-                if (match) {
-                  return `failed: ${match[1].trim()} to ${match[2].trim()} (expected: ${match[3].trim()})`;
+
+                // Extract URL redirection details from test output
+                let urlDetails = undefined;
+                if (spec.title && spec.title.includes('Redirect validation')) {
+                  const output = result?.stdout || [];
+                  // Only get PASS and FAIL lines, not Testing: lines to avoid duplicates
+                  const urlLines = output.filter((line: any) =>
+                    line.text.includes('PASS:') ||
+                    line.text.includes('FAIL:')
+                  );
+
+                  if (urlLines.length > 0) {
+                    const passedUrls = urlLines.filter((line: any) => line.text.includes('PASS:'));
+                    const failedUrls = urlLines.filter((line: any) => line.text.includes('FAIL:'));
+
+                    // Create simple URL format: "passed: from URL to to URL"
+                    const urlDetailsList = urlLines.map((line: any) => {
+                      const text = line.text.trim();
+                      if (text.includes('PASS:')) {
+                        // Handle both formats: "PASS: Redirected correctly to URL" and "PASS: from -> to"
+                        const redirectedMatch = text.match(/PASS:\s*Redirected correctly to\s*(.+)/);
+                        const arrowMatch = text.match(/PASS:\s*(.+?)\s*->\s*(.+)/);
+                        if (redirectedMatch) {
+                          return `passed: redirected correctly to ${redirectedMatch[1].trim()}`;
+                        } else if (arrowMatch) {
+                          return `passed: ${arrowMatch[1].trim()} to ${arrowMatch[2].trim()}`;
+                        }
+                      } else if (text.includes('FAIL:')) {
+                        const match = text.match(/FAIL:\s*(.+?)\s*->\s*(.+?)\s*\(Expected:\s*(.+)/);
+                        if (match) {
+                          return `failed: ${match[1].trim()} to ${match[2].trim()} (expected: ${match[3].trim()})`;
+                        }
+                      }
+                      return text;
+                    });
+
+                    urlDetails = {
+                      from_url: 'Multiple URLs tested',
+                      to_url: `Passed: ${passedUrls.length}, Failed: ${failedUrls.length}`,
+                      status: result?.status || 'skipped',
+                      details: urlDetailsList
+                    };
+                  }
                 }
-              }
-              return text;
-            });
-            
-            urlDetails = {
-              from_url: 'Multiple URLs tested',
-              to_url: `Passed: ${passedUrls.length}, Failed: ${failedUrls.length}`,
-              status: result?.status || 'skipped',
-              details: urlDetailsList
-            };
-          }
-        }
 
-        const testResult: TestResult = {
-          suiteName: `${spec.title || 'Unknown Spec'} > ${test.title || 'Unknown Test'}`,
-          status: result?.status || 'skipped',
-          duration: result?.duration || 0,
-          error: result?.errors?.[0]?.message || undefined,
-          steps: [],
-          screenshots: (result?.attachments?.filter((a: any) => a.name === 'screenshot').map((a: any) => a.path) || []),
-          urlDetails: urlDetails
-        };
+                const testResult: TestResult = {
+                  suiteName: `${spec.title || 'Unknown Spec'} > ${test.title || 'Unknown Test'}`,
+                  status: result?.status || 'skipped',
+                  duration: result?.duration || 0,
+                  error: result?.errors?.[0]?.message || undefined,
+                  steps: [],
+                  screenshots: (result?.attachments?.filter((a: any) => a.name === 'screenshot').map((a: any) => a.path) || []),
+                  urlDetails: urlDetails
+                };
 
-        if (testResult.status === 'passed') testReport.passed++;
-        else if (testResult.status === 'failed') testReport.failed++;
-        else testReport.skipped++;
+                if (testResult.status === 'passed') testReport.passed++;
+                else if (testResult.status === 'failed') testReport.failed++;
+                else testReport.skipped++;
 
-        testReport.testResults.push(testResult);
+                testReport.testResults.push(testResult);
               });
             }
           });
@@ -279,7 +279,7 @@ export async function generatePDFReport(jsonResultsPath: string, outputPath: str
       skipped: testReport.skipped,
       testResultsCount: testReport.testResults.length
     });
-    
+
     const generator = new PDFReportGenerator(outputPath);
     await generator.generateReport(testReport);
 

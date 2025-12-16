@@ -1,240 +1,167 @@
 import fs from "fs-extra";
 import pixelmatch from "pixelmatch";
-import { PNG, PNGWithMetadata } from "pngjs";
+import { PNG } from "pngjs";
 import PDFDocument from "pdfkit";
 import path from "path";
 import jpeg from "jpeg-js";
 
-interface ImageData {
-  width: number;
-  height: number;
-  data: Buffer;
+// CLI arg helpers: --report=path or --group=name
+const argv = process.argv.slice(2);
+function getArgValue(prefix: string): string | undefined {
+    const a = argv.find((p) => p.startsWith(prefix));
+    return a ? a.slice(prefix.length) : undefined;
+}
+const reportArg = getArgValue('--report=');
+const groupArg = getArgValue('--group=');
+const _timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+const computedReportPath = reportArg ?? (groupArg ? `test-results/${groupArg}-${_timestamp}.pdf` : undefined);
+interface Config {
+    devDir: string;
+    prodDir: string;
+    diffDir: string;
+    reportPath: string;
 }
 
-interface CompareResult {
-  name: string;
-  devPath: string;
-  prodPath: string;
-  diffPath: string;
-  isDifferent: boolean;
-  diffPixels: number;
+interface RawImage {
+    width: number;
+    height: number;
+    data: Buffer;
 }
 
-const config = {
-  devDir: "screenshots/dev",
-  prodDir: "screenshots/prod",
-  diffDir: "screenshots/diff",
-  reportPath: "reports/result-report.pdf"
+interface ScreenshotPair {
+    name: string;
+    dev: string;
+    prod: string;
+    diff: string;
+}
+
+interface Result extends ScreenshotPair {
+    diffPixels: number;
+}
+
+const config: Config = {
+    devDir: "screenshots/dev",
+    prodDir: "screenshots/prod",
+    diffDir: "screenshots/diff",
+    reportPath: computedReportPath ?? "test-results/result-report.pdf",
 };
 
 fs.ensureDirSync(config.diffDir);
-fs.ensureDirSync("reports");
+fs.ensureDirSync("test-results");
 
-// Helper to read PNG or JPG as {width, height, data}
-function readImage(filePath: string): ImageData {
-  const ext = path.extname(filePath).toLowerCase();
-  const buffer = fs.readFileSync(filePath);
-  
-  if (ext === '.png') {
-    const png = PNG.sync.read(buffer);
-    return {
-      width: png.width,
-      height: png.height,
-      data: png.data
-    };
-  } else if (ext === '.jpg' || ext === '.jpeg') {
-    const jpegData = jpeg.decode(buffer, { useTArray: true });
-    return {
-      width: jpegData.width,
-      height: jpegData.height,
-      data: Buffer.from(jpegData.data)
-    };
-  }
-  throw new Error(`Unsupported image format: ${ext}`);
-}
+function readImage(filePath: string): RawImage {
+    const ext = path.extname(filePath).toLowerCase();
+    const buf = fs.readFileSync(filePath);
 
-// Pad image to target size (white background)
-function padImage(img: ImageData, targetWidth: number, targetHeight: number): ImageData {
-  if (img.width === targetWidth && img.height === targetHeight) {
-    return img;
-  }
-
-  const result = {
-    width: targetWidth,
-    height: targetHeight,
-    data: Buffer.alloc(targetWidth * targetHeight * 4, 255) // Fill with white
-  };
-
-  // Copy original image data to the center
-  const offsetX = Math.floor((targetWidth - img.width) / 2);
-  const offsetY = Math.floor((targetHeight - img.height) / 2);
-
-  for (let y = 0; y < img.height; y++) {
-    for (let x = 0; x < img.width; x++) {
-      const srcIdx = (y * img.width + x) * 4;
-      const destIdx = ((y + offsetY) * targetWidth + (x + offsetX)) * 4;
-      
-      result.data[destIdx] = img.data[srcIdx];         // R
-      result.data[destIdx + 1] = img.data[srcIdx + 1]; // G
-      result.data[destIdx + 2] = img.data[srcIdx + 2]; // B
-      result.data[destIdx + 3] = img.data[srcIdx + 3]; // A
+    if (ext === ".png") {
+        const png = PNG.sync.read(buf) as unknown as PNG;
+        return { width: png.width, height: png.height, data: Buffer.from(png.data) };
     }
-  }
-  
-  return result;
-}
 
-function getScreenshotPairs(): Array<{name: string, devPath: string, prodPath: string, diffPath: string}> {
-  const devFiles = new Set(fs.readdirSync(config.devDir));
-  const prodFiles = new Set(fs.readdirSync(config.prodDir));
-  
-  const commonFiles = [...devFiles].filter(file => prodFiles.has(file));
-  
-  return commonFiles.map(file => ({
-    name: path.basename(file, path.extname(file)),
-    devPath: path.join(config.devDir, file),
-    prodPath: path.join(config.prodDir, file),
-    diffPath: path.join(config.diffDir, `diff-${file}`)
-  }));
-}
+    if (ext === ".jpg" || ext === ".jpeg") {
+        const jpg = jpeg.decode(buf, { useTArray: true });
 
-function compareScreenshots(devPath: string, prodPath: string, diffPath: string): Promise<{isDifferent: boolean, diffPixels: number}> {
-  return new Promise((resolve) => {
-    try {
-      const img1 = readImage(devPath);
-      const img2 = readImage(prodPath);
-      
-      // Use the larger dimensions for both images
-      const maxWidth = Math.max(img1.width, img2.width);
-      const maxHeight = Math.max(img1.height, img2.height);
-      
-      const padded1 = padImage(img1, maxWidth, maxHeight);
-      const padded2 = padImage(img2, maxWidth, maxHeight);
-      
-      const diff = new PNG({ width: maxWidth, height: maxHeight });
-      
-      const diffPixels = pixelmatch(
-        padded1.data, 
-        padded2.data, 
-        diff.data, 
-        maxWidth, 
-        maxHeight, 
-        { threshold: 0.1 }
-      );
-      
-      const isDifferent = diffPixels > 0;
-      
-      if (isDifferent) {
-        fs.writeFileSync(diffPath, PNG.sync.write(diff));
-      }
-      
-      resolve({ isDifferent, diffPixels });
-    } catch (error) {
-      console.error(`Error comparing ${devPath} and ${prodPath}:`, error);
-      resolve({ isDifferent: true, diffPixels: Infinity });
+        const anyJpg = jpg as unknown as { width: number; height: number; data: Buffer };
+
+        if (anyJpg.data.length === anyJpg.width * anyJpg.height * 4) {
+            return { width: anyJpg.width, height: anyJpg.height, data: Buffer.from(anyJpg.data) };
+        }
+
+        const rgba = Buffer.alloc(anyJpg.width * anyJpg.height * 4);
+        for (let i = 0; i < anyJpg.width * anyJpg.height; i++) {
+            rgba[i * 4 + 0] = anyJpg.data[i * 3 + 0];
+            rgba[i * 4 + 1] = anyJpg.data[i * 3 + 1];
+            rgba[i * 4 + 2] = anyJpg.data[i * 3 + 2];
+            rgba[i * 4 + 3] = 255;
+        }
+        return { width: anyJpg.width, height: anyJpg.height, data: rgba };
     }
-  });
+
+    throw new Error(`Unsupported image format: ${filePath}`);
 }
 
-async function generatePDFReport(results: CompareResult[]): Promise<void> {
-  const doc = new PDFDocument();
-  const stream = fs.createWriteStream(config.reportPath);
-  doc.pipe(stream);
-  
-  doc.fontSize(20).text('Screenshot Comparison Report', { align: 'center' } as any);
-  doc.moveDown();
-  
-  const now = new Date();
-  doc.fontSize(12).text(`Generated on: ${now.toLocaleString()}`, { align: 'center' } as any);
-  doc.moveDown(2);
-  
-  // Summary
-  const differentCount = results.filter(r => r.isDifferent).length;
-  doc.fontSize(16).text('Summary', { underline: true } as any);
-  doc.fontSize(12).text(`Total comparisons: ${results.length}`);
-  doc.text(`Differences found: ${differentCount} (${(differentCount / results.length * 100).toFixed(1)}%)`);
-  doc.moveDown(2);
-  
-  // Detailed results
-  doc.fontSize(16).text('Detailed Results', { underline: true } as any);
-  doc.moveDown(1);
-  
-  results.forEach((result, index) => {
-    doc.fontSize(14).text(`${index + 1}. ${result.name}`, { underline: true } as any);
-    doc.fontSize(12).text(`Status: ${result.isDifferent ? 'DIFFERENT' : 'IDENTICAL'}`);
-    
-    if (result.isDifferent) {
-      doc.text(`Different pixels: ${result.diffPixels}`);
-      
-      // Add images side by side
-      const imageWidth = 200;
-      const imageHeight = 150;
-      const startX = 50;
-      
-      try {
-        // Dev image
-        doc.image(result.devPath, startX, doc.y + 10, { width: imageWidth, height: imageHeight });
-        doc.text('Dev', startX, doc.y + imageHeight + 5);
-        
-        // Prod image
-        doc.image(result.prodPath, startX + imageWidth + 20, doc.y - imageHeight - 15, { width: imageWidth, height: imageHeight });
-        doc.text('Prod', startX + imageWidth + 20, doc.y + 5);
-        
-        // Diff image
-        doc.image(result.diffPath, startX + (imageWidth + 20) * 2, doc.y - imageHeight - 15, { width: imageWidth, height: imageHeight });
-        doc.text('Difference', startX + (imageWidth + 20) * 2, doc.y + 5);
-      } catch (error) {
-        doc.text('Error loading images for comparison');
-      }
+function padImage(img: RawImage, targetWidth: number, targetHeight: number): RawImage {
+    if (img.width === targetWidth && img.height === targetHeight) return img;
+    const padded = Buffer.alloc(targetWidth * targetHeight * 4, 255);
+
+    for (let y = 0; y < img.height; y++) {
+        for (let x = 0; x < img.width; x++) {
+            const srcIdx = (y * img.width + x) * 4;
+            const dstIdx = (y * targetWidth + x) * 4;
+            img.data.copy(padded, dstIdx, srcIdx, srcIdx + 4);
+        }
     }
-    
-    doc.moveDown(2);
-  });
-  
-  doc.end();
-  
-  return new Promise<void>((resolve, reject) => {
-    stream.on('finish', () => {
-      console.log(`Report generated at: ${path.resolve(config.reportPath)}`);
-      resolve();
-    });
-    stream.on('error', (err) => {
-      reject(err);
-    });
-  });
+
+    return { width: targetWidth, height: targetHeight, data: padded };
+}
+
+function getScreenshotPairs(): ScreenshotPair[] {
+    const devFiles = fs.readdirSync(config.devDir).filter((f) => /\.(png|jpg|jpeg)$/i.test(f));
+    return devFiles
+        .map((file) => ({
+            name: file.replace(/\.(png|jpg|jpeg)$/i, ""),
+            dev: path.join(config.devDir, file),
+            prod: path.join(config.prodDir, file),
+            diff: path.join(config.diffDir, file.replace(/\.(png|jpg|jpeg)$/i, "_diff.png")),
+        }))
+        .filter((pair) => fs.existsSync(pair.prod));
+}
+
+function compareScreenshots(devPath: string, prodPath: string, diffPath: string): number {
+    let devImg = readImage(devPath);
+    let prodImg = readImage(prodPath);
+    const width = Math.max(devImg.width, prodImg.width);
+    const height = Math.max(devImg.height, prodImg.height);
+
+    devImg = padImage(devImg, width, height);
+    prodImg = padImage(prodImg, width, height);
+
+    const diff = new PNG({ width, height });
+    const diffPixels = pixelmatch(devImg.data, prodImg.data, diff.data, width, height, { threshold: 0.1 });
+    fs.writeFileSync(diffPath, PNG.sync.write(diff));
+    return diffPixels;
+}
+
+async function generatePDFReport(results: Result[]): Promise<void> {
+    const doc = new PDFDocument({ autoFirstPage: false });
+    doc.pipe(fs.createWriteStream(config.reportPath));
+
+    for (const r of results) {
+        doc.addPage();
+        doc.fontSize(14).text(`URL: ${r.name}`);
+        doc.moveDown();
+        doc
+            .fontSize(12)
+            .text(`Match: ${r.diffPixels === 0 ? "✅ Yes" : `❌ No (${r.diffPixels} pixels differ)`}`);
+        doc.moveDown();
+        const y = doc.y;
+        const leftX = doc.page.margins.left;
+        const rightX = doc.page.width - doc.page.margins.right - 250;
+        doc.image(r.dev, leftX, y, { width: 250 });
+        doc.image(r.prod, rightX, y, { width: 250 });
+        doc.y = y + 260;
+        if (r.diffPixels > 0) {
+            doc.moveDown();
+            doc.image(r.diff, undefined, undefined, { width: 250 });
+        }
+        doc.moveDown();
+    }
+
+    doc.end();
+    console.log(`PDF report generated: ${config.reportPath}`);
 }
 
 async function main(): Promise<void> {
-  try {
     const pairs = getScreenshotPairs();
-    console.log(`Found ${pairs.length} screenshot pairs to compare`);
-    
-    const results: CompareResult[] = [];
-    
+    const results: Result[] = [];
+
     for (const pair of pairs) {
-      console.log(`Comparing ${pair.name}...`);
-      const { isDifferent, diffPixels } = await compareScreenshots(
-        pair.devPath,
-        pair.prodPath,
-        pair.diffPath
-      );
-      
-      results.push({
-        name: pair.name,
-        devPath: pair.devPath,
-        prodPath: pair.prodPath,
-        diffPath: pair.diffPath,
-        isDifferent,
-        diffPixels
-      });
+        const diffPixels = compareScreenshots(pair.dev, pair.prod, pair.diff);
+        results.push({ ...pair, diffPixels });
+        console.log(`${pair.name}: ${diffPixels === 0 ? "Match" : `Diff (${diffPixels} pixels)`}`);
     }
-    
+
     await generatePDFReport(results);
-    console.log('Comparison complete');
-  } catch (error) {
-    console.error('Error in main:', error);
-    process.exit(1);
-  }
 }
 
-main();
+void main();

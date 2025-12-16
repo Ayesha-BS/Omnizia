@@ -1,9 +1,9 @@
-import { cleanupUserData } from './dbCleanup';
+import { deleteUserByUuid } from './dbCleanup';
 
 async function main() {
     try {
         console.log('🚀 Starting user data cleanup...');
-        await cleanupUserData('DE444444');
+        await deleteUserByUuid('DE444444');
         console.log('✅ Cleanup completed successfully');
     } catch (error) {
         console.error('❌ Error during cleanup:', error);

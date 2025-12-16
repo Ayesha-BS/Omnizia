@@ -10,8 +10,8 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "start": "tsx tests/visual-compare/compare_optimized.ts",
-    "dev": "tsx watch tests/visual-compare/compare_optimized.ts",
+    "start": "tsx tests/visual-compare/compare_optimize.ts",
+    "dev": "tsx watch tests/visual-compare/compare_optimize.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:pdf": "tsx utils/generate-test-pdf.ts",
     "test:run": "npx playwright test && npm run test:pdf",
@@ -34,11 +34,14 @@
     "@types/fs-extra": "^11.0.4",
     "@types/jpeg-js": "^0.3.0",
     "@types/node": "^20.11.5",
+    "@types/pdfkit": "^0.17.4",
     "@types/pixelmatch": "^5.2.6",
     "@types/pngjs": "^6.0.0",
+    "@types/sharp": "^0.31.1",
     "csv-parse": "^6.1.0",
     "dotenv": "^17.2.3",
     "ts-node": "^10.9.1",
+    "tsx": "^4.21.0",
     "typescript": "^5.3.3"
   }
 }
